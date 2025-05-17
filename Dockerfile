@@ -11,7 +11,8 @@ RUN npm ci
 COPY . .
 
 # Generate Prisma client
-RUN npx prisma generate --schema=./src/prisma/schema.prisma
+RUN npx prisma generate --schema=./src/prisma/schema.prisma --skip-generate-libquery-engine
+RUN npm install --save @prisma/client
 
 # Build the app
 FROM base as build
