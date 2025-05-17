@@ -11,7 +11,7 @@ RUN npm ci
 COPY . .
 
 # Generate Prisma client
-RUN npx prisma generate
+RUN npx prisma generate --schema=./src/prisma/schema.prisma
 
 # Build the app
 FROM base as build
@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/prisma ./prisma
+COPY --from=build /app/src/prisma ./prisma
 
 EXPOSE 8080
 
