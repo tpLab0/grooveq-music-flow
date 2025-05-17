@@ -30,7 +30,11 @@ npx prisma migrate dev --name init --create-only
 echo "Applying migration directly..."
 npx prisma migrate deploy
 
-# Step 6: Start development server
+# Step 6: Install prisma client using npm instead of bun
+echo "Installing Prisma client..."
+npm install --save @prisma/client
+
+# Step 7: Start development server
 echo "Starting development server..."
 echo "You can run 'npm run dev' to start the server manually."
 
