@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
 
-## Project info
+# GrooveQ - Collaborative Music Streaming Platform
 
-**URL**: https://lovable.dev/projects/0c95ba87-7121-4bd1-986b-2a2ac32f865d
+GrooveQ is a collaborative music platform that allows users to create and share playlists, vote on songs, and enjoy music together in real-time.
 
-## How can I edit this code?
+![GrooveQ Screenshot](https://via.placeholder.com/800x400?text=GrooveQ+Screenshot)
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Collaborative playlists**: Create music queues that everyone can contribute to
+- **Voting system**: Vote songs up or down to influence the playback order
+- **YouTube integration**: Add songs directly from YouTube
+- **Real-time updates**: See changes to playlists and votes instantly
+- **User accounts**: Register, login, and manage your playlists
+- **Mobile responsive**: Enjoy the experience on any device
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0c95ba87-7121-4bd1-986b-2a2ac32f865d) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend**: React, TypeScript, TailwindCSS, shadcn/ui
+- **Backend**: Node.js
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Real-time**: Socket.io
+- **State Management**: React Context, TanStack Query
+- **Deployment**: Docker
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v16+)
+- npm or yarn
+- PostgreSQL
+- Docker (optional, for containerized setup)
 
-Follow these steps:
+### Local Development
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+git clone https://github.com/yourusername/grooveq.git
+cd grooveq
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Setup environment**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# Run the setup script
+chmod +x setup.sh
+./setup.sh
+```
+
+The setup script will:
+- Create a `.env` file from `.env.example`
+- Install dependencies
+- Generate Prisma client
+- Create and apply database migrations
+- Prepare the application for development
+
+3. **Start the development server**
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. **Access the application**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open your browser and navigate to `http://localhost:5173`
 
-**Use GitHub Codespaces**
+### Docker Setup
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+For a containerized setup:
 
-## What technologies are used for this project?
+```bash
+# Start the Docker containers
+chmod +x docker-dev.sh
+./docker-dev.sh
+```
 
-This project is built with:
+Access the application at `http://localhost:8080`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Database Schema
 
-## How can I deploy this project?
+GrooveQ uses PostgreSQL with the following models:
 
-Simply open [Lovable](https://lovable.dev/projects/0c95ba87-7121-4bd1-986b-2a2ac32f865d) and click on Share -> Publish.
+- **Users**: Authentication and user profile information
+- **Playlists**: Music collections created by users
+- **Songs**: Music tracks added to playlists from YouTube
+- **Votes**: User votes on songs that affect queue order
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes, you can!
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- YouTube Data API
+- All contributors and users of the platform
