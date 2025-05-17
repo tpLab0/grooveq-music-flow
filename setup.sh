@@ -22,19 +22,27 @@ npm install
 echo "Generating Prisma client..."
 npx prisma generate
 
-# Step 4: Apply migrations (with --create-only flag to avoid shadow DB)
-echo "Creating migration..."
-npx prisma migrate dev --name init --create-only
+# Step 4: Check if database is already populated
+echo "Checking database status..."
+if npx prisma db pull --print >/dev/null 2>&1; then
+  # Database exists and has schema, let's do a baseline migration
+  echo "Database already has tables. Creating a baseline migration..."
+  npx prisma migrate dev --name init --create-only
+  echo "Applying migration with --skip-generate flag..."
+  npx prisma migrate deploy --skip-generate
+else
+  # Database is empty or doesn't exist
+  echo "Creating migration..."
+  npx prisma migrate dev --name init --create-only
+  echo "Applying migration directly..."
+  npx prisma migrate deploy
+fi
 
-# Step 5: Apply migration directly
-echo "Applying migration directly..."
-npx prisma migrate deploy
-
-# Step 6: Install prisma client using npm instead of bun
+# Step 5: Install prisma client using npm instead of bun
 echo "Installing Prisma client..."
 npm install --save @prisma/client
 
-# Step 7: Start development server
+# Step 6: Start development server
 echo "Starting development server..."
 echo "You can run 'npm run dev' to start the server manually."
 
