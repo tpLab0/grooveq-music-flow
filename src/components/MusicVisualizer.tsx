@@ -13,7 +13,8 @@ export const MusicVisualizer = () => {
     const bars = document.querySelectorAll('.visualizer-bar');
     bars.forEach(bar => {
       bar.classList.remove('animate-music-pulse', 'animate-music-pulse-slow', 'animate-music-pulse-slower');
-      void bar.offsetWidth; // Trigger reflow to restart animation
+      // Fix the TypeScript error by explicitly casting to HTMLElement
+      (bar as HTMLElement).offsetWidth; // Trigger reflow to restart animation
       
       // Add animation classes back with delays
       const animClass = ['animate-music-pulse', 'animate-music-pulse-slow', 'animate-music-pulse-slower'][
